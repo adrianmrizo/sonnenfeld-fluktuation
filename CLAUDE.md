@@ -20,8 +20,8 @@ works council (data protection, fairness, no unjustified individual predictions)
 - **Input:** cleaned table from Jakub in `data/input/` (path in `config.INPUT_FILE`). Read-only, never edit.
   The first notebook starts with an input check (row count, dtypes, missing values, duplicates, value ranges)
   because the data was cleaned by someone else.
-- **Output for the dashboard:** `data/processed/risikosegmente.csv` — aggregated risk **segments**
-  (e.g. department × tenure band), not individual scores.
+- **Output for the dashboard:** `data/processed/dashboard_export.csv`. Format (aggregated segments vs.
+  individual scores) is an **open decision** — see section 4.
 - Data files are not committed (see `.gitignore`). Results are visible through notebook outputs and `reports/figures/`.
 
 ## 3. Data facts
@@ -37,10 +37,15 @@ works council (data protection, fairness, no unjustified individual predictions)
 ## 4. Hard rules
 
 1. `data/input/` is read-only.
-2. `geschlecht` is **not** a model feature. Use it only for a fairness check
-   (recall / false-positive rate per group). Documented in `docs/ethik_entscheidungen.md`.
-3. No leakage: split first, then fit all preprocessing inside an sklearn `Pipeline`.
-   `mitarbeiter_id` is never a feature. `modelling.split()` enforces this.
+2. No leakage: split first, then fit all preprocessing inside an sklearn `Pipeline`.
+   `mitarbeiter_id` and the target are never features. `modelling.split()` enforces this.
+3. **Open decisions belong to Adrian.** Never decide them in code, docs or defaults; present
+   the options with pros and cons and ask. Record his decision in `docs/ethik_entscheidungen.md`.
+   Currently open:
+   - whether `geschlecht` is used as a model feature (the brief requires a justified decision;
+     works council rejects discriminatory models)
+   - whether the dashboard receives individual risk scores or only aggregated segments
+     (brief: no individual predictions *without justification*)
 4. Imbalanced target: stratified split; report recall, precision, F1, ROC-AUC and confusion matrix.
    Never accuracy alone. Recall on class 1 is the primary metric.
 5. Use `RANDOM_STATE` from `config.py` everywhere.
@@ -82,6 +87,6 @@ jupyter lab
 - Adrian is learning: explain the reasoning behind a technical choice briefly **before** writing code.
   He must defend every step in the Fachgespräch, so understanding matters more than speed.
 - Ask what he thinks before giving the answer on analytical decisions (hypotheses, feature choice, threshold).
-- Ask before large refactors.
+- Ask before large refactors and before any decision with ethical, legal or business impact.
 - When a decision affects the report (feature choice, threshold, ethics), add it to the matching file in `docs/`.
 - Flag anything that would not hold up in front of an IHK jury.

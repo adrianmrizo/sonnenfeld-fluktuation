@@ -4,7 +4,8 @@
 
 - **Entscheidung:** *(TODO)*
 - **Begründung:** *(TODO — AGG, DSGVO, Position des Betriebsrats)*
-- **Fairness-Prüfung:** Vergleich von Recall und False-Positive-Rate je Gruppe (Notebook 03)
+- **Optionen:** *(TODO — Pro und Contra)*
+- **Fairness-Prüfung:** *(TODO)*
 
 ## 2. Personenbezogene Vorhersagen
 

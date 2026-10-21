@@ -37,7 +37,7 @@ und sind nicht Teil dieses Repositorys.
 ```
 ├── data/
 │   ├── input/          Bereinigte Daten (nicht versioniert)
-│   └── processed/      Features und Risikosegmente (nicht versioniert)
+│   └── processed/      Features und Export (nicht versioniert)
 ├── notebooks/          Analyse in drei Schritten
 ├── src/sonnenfeld/     Wiederverwendbarer Code (Konfiguration, Features, Modell, Grafikstil)
 ├── reports/figures/    Exportierte Grafiken
@@ -48,9 +48,8 @@ und sind nicht Teil dieses Repositorys.
 ## Daten und Datenschutz
 
 - Synthetischer Datensatz, bereitgestellt von Masterschool; die Daten selbst werden nicht veröffentlicht.
-- Das Merkmal `geschlecht` wird nicht als Modell-Feature verwendet, sondern nur für eine
-  Fairness-Prüfung. Begründung: [`docs/ethik_entscheidungen.md`](docs/ethik_entscheidungen.md).
-- Ergebnisse werden als aggregierte Risikosegmente weitergegeben, nicht als personenbezogene Vorhersagen.
+- Umgang mit dem Merkmal `geschlecht` und mit personenbezogenen Vorhersagen:
+  siehe [`docs/ethik_entscheidungen.md`](docs/ethik_entscheidungen.md).
 
 ## Setup
 
