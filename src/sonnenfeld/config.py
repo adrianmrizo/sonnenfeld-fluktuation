@@ -12,7 +12,9 @@ DATA_PROCESSED = ROOT / "data" / "processed"  # my own outputs (features, segmen
 MODELS = ROOT / "models"
 FIGURES = ROOT / "reports" / "figures"
 
-INPUT_FILE = DATA_INPUT / "mitarbeiter_clean.csv"        # TODO: adjust to the file name received
+INPUT_FILE = DATA_INPUT / "gold_mitarbeiter_202610221646.csv"        # TODO: adjust to the file name received
+RAW_FILE = ROOT / "data" / "raw" / "mitarbeiter.csv"  # original export, exploration only
+RAW_ENCODING = "utf-8-sig"                             # file is UTF-8 with BOM
 FEATURES_FILE = DATA_PROCESSED / "mitarbeiter_features.parquet"
 DASHBOARD_EXPORT = DATA_PROCESSED / "dashboard_export.csv"  # output for the dashboard (format: OPEN decision)
 
@@ -24,3 +26,5 @@ SENSITIVE_COLS = ["geschlecht"]  # protected attribute — use as feature: OPEN 
 # --- Reproducibility ---------------------------------------------------------
 RANDOM_STATE = 42
 TEST_SIZE = 0.2
+
+STICHTAG = "2025-12-31"

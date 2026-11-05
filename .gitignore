@@ -3,6 +3,9 @@ data/input/*
 data/processed/*
 !data/input/.gitkeep
 !data/processed/.gitkeep
+data/raw/*
+notebooks/scratch/
+notes/
 
 # --- Models ---
 models/*
